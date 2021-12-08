@@ -16,25 +16,31 @@ public class Controller {
     @Autowired
     private ClienteService clienteService;
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/create")
     public ResponseEntity<Cliente> create(@RequestBody Cliente cliente) throws AddressException {
      return ResponseEntity.ok().body(clienteService.create(cliente));
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/findall")
     public ResponseEntity<List<Cliente>> findAll(){
         return ResponseEntity.ok().body(clienteService.findAll());
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/{id}")
+    public ResponseEntity<Cliente> findById(@PathVariable Long id){
+        return ResponseEntity.ok().body(clienteService.findById(id));
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping(value = "/{id}")
     public ResponseEntity<Cliente> edit(@PathVariable Long id, @RequestBody Cliente cliente) throws AddressException {
         return ResponseEntity.ok().body(clienteService.edit(id, cliente));
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Cliente> delete(@PathVariable Long id){
         clienteService.delete(id);

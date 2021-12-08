@@ -39,6 +39,11 @@ public class ClienteService {
         clienteRepository.deleteById(id);
     }
 
+    public Cliente findById(Long id) {
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        return cliente.orElseThrow(() -> new DataIntergrityViolationException("Objeto não encontrado! Id: " + id));
+    }
+
     private void validaPorCpfEEmail(Cliente cliente) {
         Optional<Cliente> obj = clienteRepository.findByCpf(cliente.getCpf());
         if (obj.isPresent() && obj.get().getId() != cliente.getId()){
@@ -48,11 +53,6 @@ public class ClienteService {
         if(obj.isPresent() && obj.get().getId() != cliente.getId()){
             throw new DataIntergrityViolationException("E-mail já cadastrado!");
         }
-    }
-
-    private Cliente findById(Long id) {
-        Optional<Cliente> cliente = clienteRepository.findById(id);
-        return cliente.orElseThrow(() -> new DataIntergrityViolationException("Objeto não encontrado! Id: " + id));
     }
 
     private void validaEmail(String email) throws AddressException {
