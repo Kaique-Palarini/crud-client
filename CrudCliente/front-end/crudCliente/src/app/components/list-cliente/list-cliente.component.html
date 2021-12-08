@@ -1,0 +1,73 @@
+<body>
+  <nav class="navbar navbar-expand-lg" style="border-radius: 10px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="color: white;">Crud</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="#">Cadastrar</a>
+          <a class="nav-link" href="#">Listar</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- <div class="divPesquisa">
+    <input id="pesquisa" matInput (keyup)="applyFilter($event)" placeholder="Insira aqui sua pesquisa por cliente" #input>
+  </div> -->
+
+  <div class="container">
+
+    <div class="mat-elevation-z8" style="margin-left: 3%; width: 93%;">
+      <table class="tableDataSource" [dataSource]="dataSource" mat-table>
+
+        <ng-container matColumnDef="nome" style="width: 20%;">
+          <th mat-header-cell *matHeaderCellDef>Nome completo</th>
+          <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cpf" style="width: 20%;">
+          <th mat-header-cell *matHeaderCellDef>CPF</th>
+          <td mat-cell *matCellDef="let element" mask="CPF_CNPJ"> {{element.cpf}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tel" style="width: 20%;">
+          <th mat-header-cell *matHeaderCellDef>Telefone</th>
+          <td mat-cell *matCellDef="let element"> {{element.telefone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email" style="width: 20%;">
+          <th mat-header-cell *matHeaderCellDef>E-mail</th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+         <ng-container matColumnDef="endereco" style="width: 20%;">
+            <th mat-header-cell *matHeaderCellDef>Endereço</th>
+            <td mat-cell *matCellDef="let element"> {{element.endereco}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element">
+              <a routerLink="updateCliente/{{ element.id }}">
+                <i class="material-icons edit">edit</i>
+              </a>
+              <a routerLink="deleteCliente/{{ element.id }}">
+                <i class="material-icons delete">delete</i>
+              </a>
+            </td>
+          </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+
+</body>

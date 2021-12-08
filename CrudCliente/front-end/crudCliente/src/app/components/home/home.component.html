@@ -1,0 +1,107 @@
+<body>
+  <nav class="navbar navbar-expand-lg" style="border-radius: 10px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="color: white;">Crud</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="#">Cadastrar</a>
+          <a class="nav-link" [routerLink]="['/listCliente']">Listar</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div style="margin-top: 4%; margin-bottom: 2%; margin-left: 40%;">
+    <h1>Cadastrar Cliente</h1>
+  </div>
+
+  <div class="row g-3 align-items-center" style="margin-left: 10%;">
+    <div class="col-auto" style="width: 38%;">
+      <label >Nome completo</label>
+      <input [(ngModel)]="cliente.nome" required="true" minlength="3" maxlength="100" name="nomeComp" type="text" class="form-control" id="nomeComp" />
+    </div>
+    <div class="col-auto" style="width: 15%;">
+      <label >Nº CPF</label>
+      <input [(ngModel)]="cliente.cpf" placeholder="000.000.000-00" mask="CPF_CNPJ" type="text" class="form-control" id="cpf" />
+    </div>
+    <div class="col-auto" style="width: 25%;">
+      <label >E-mail</label>
+      <input [(ngModel)]="cliente.email" name="email" type="email" class="form-control" id="email"/>
+    </div>
+        <div class="col-auto" style="width: 12%;">
+          <label for="inputState">Tipo Telefone</label>
+          <select [(ngModel)]="cliente.tipoTelefone" name="tipoTelefone" id="inputState" class="form-control">
+            <option selected>Selecione</option>
+            <option value="COMERCIAL">Comercial</option>
+            <option value="RESIDENCIAL">Residencial</option>
+            <option value="CELULAR">Celular</option>
+          </select>
+        </div>
+    <div class="col-auto" style="width: 18%;">
+      <label >Nº telefone</label>
+      <input [(ngModel)]="cliente.telefone" placeholder="(00) 00000-0000" [dropSpecialCharacters]="false" prefix="+55 " mask="(00) 0000-0000 || (00) 0 0000-0000"
+        type="text" class="form-control" id="telefone" name="telefone" />
+    </div>
+  </div>
+
+  <div class="divH1Endereco">
+    <h1>Endereço</h1>
+  </div>
+
+  <div class="endereco">
+    <div class="row g-3 align-items-center" style="margin-left: 10%;">
+      <div class="col-auto" style="width: 30%;">
+        <label for="inputNomeVeiculo">Endereço</label>
+        <input [(ngModel)]="cliente.logradouro" type="text" class="form-control" id="endereco" />
+      </div>
+      <div class="col-auto" style="width: 15%;">
+        <label for="inputPassword4">Nº CEP</label>
+        <input [(ngModel)]="cliente.cep" [dropSpecialCharacters]="false" mask="00.000-000" placeholder="00.000-000" type="text"
+          class="form-control" id="cep" />
+      </div>
+      <div class="col-auto" style="width: 10%;">
+        <label for="inputPassword4">Nº residência</label>
+        <input [(ngModel)]="cliente.numero" [dropSpecialCharacters]="false" mask="00000" placeholder="0000" type="text" class="form-control"
+          id="numResidencia" />
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword4">Complemento</label>
+        <input [(ngModel)]="cliente.complemento" type="text" class="form-control" id="complemento" />
+      </div>
+      <div class="col-auto" style="width: 15%;">
+        <label for="inputPassword4" >Bairro</label>
+        <input [(ngModel)]="cliente.bairro" type="text" class="form-control" id="bairro" />
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword4">Cidade</label>
+        <input  [(ngModel)]="cliente.cidade" type="text" class="form-control" id="cidade" />
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword4">UF</label>
+        <input [(ngModel)]="cliente.uf" type="text" class="form-control" id="uf" />
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-1">
+
+      </div>
+      <div class="col-1">
+
+      </div>
+      <div class="col-10">
+        <div class="botoes">
+        <button [routerLink]="['/clienteList']" routerLinkActive="router-link-active" type="submit"
+          class="btnCancelar">Cancelar</button>
+        <button type="submit" class="btnLimpar">Limpar</button>
+        <button [disabled]="" (click)="create()" type="submit" mat-flat class="btnCadastrar">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,37 @@
+body {
+  margin-top: 3%;
+}
+
+.navbar {
+  width: 80%;
+  margin-left: 10%;
+  background-color: #010B40;
+}
+
+.divPesquisa {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 93%;
+  margin-left: 3%;
+}
+
+.container {
+  width: 93%;
+  margin-top: 5%;
+}
+
+.tableDataSource {
+  width: 100%;
+}
+
+.mat-form-field {
+  width: 93%;
+}
+
+.delete {
+  color: red;
+}
+
+.edit {
+  color: #010B40;
+}
